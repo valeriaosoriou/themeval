@@ -1,15 +1,13 @@
 <?php
-//------------------------------ STYLESHEETS ------------------------------------//
-function load_css() {
-  wp_enqueue_style( 'style', get_stylesheet_uri() );
-  wp_enqueue_style( 'slider', get_template_directory_uri() . '/css/slider.css', array(), '1.1', 'all');
-  wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.js', array ( 'jquery' ), 1.1, true);
+//------------------------------ STYLESHEETS, BOOTSTRAP AND JS------------------------------------//
+function add_css_js() {
+  wp_enqueue_style( 'style', get_stylesheet_uri() ); //style.css
+  wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), 'false', 'all'); //boostrap CSS
+  // wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.js', array ( 'jquery' ), 1.1, true);
  
-    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-      wp_enqueue_script( 'comment-reply' );
-    }
+ 
 }
-add_action( 'wp_enqueue_scripts', 'load_css' );
+add_action( 'wp_enqueue_scripts', 'add_css_js' );
 
 //------------------------------ MENU ------------------------------------//
 function register_my_menus() {
@@ -94,6 +92,6 @@ function my_theme_wrapper_end() {
     echo '</section>';
 }
 
-//------------------------------------WOOCOMMERCE ---------------------------------//
+//------------------------------------#####---------------------------------//
 
 ?>
