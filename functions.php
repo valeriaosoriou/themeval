@@ -34,9 +34,9 @@ add_action( 'init', 'register_my_menus' );
 $args = array(
   'flex-width'    => true,
   'header-text'   => true,
-  'width'         => 1024,
+  'width'         => 1920,
   'flex-height'   => true,
-  'height'        => 300,
+  'height'        => 500,
   'default-image' => get_template_directory_uri() . '/images/header.jpg',
 );
 add_theme_support( 'custom-header', $args );
