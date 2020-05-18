@@ -16,10 +16,11 @@
           } ?>
         <!-- Title, date, content -->
           <h2 class="my-3"><?php the_title(); ?></h2>
-          <p class="lead"><?php echo get_the_date(); ?></p>
+          <p class="lead"><?php the_time('F j Y'); ?></p>
           <div class="text-justify">
             <?php the_content(); ?>
           </div>
+          <small>Author: <?php the_author(); ?> / Category: <?php the_category(', '); ?> / Tags: <?php the_tags(', '); ?></small>
         </div><!-- end post -->
         <?php 
           endwhile; 

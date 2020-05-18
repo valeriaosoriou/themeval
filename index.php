@@ -23,7 +23,7 @@
                 <p class="card-text"><?php the_excerpt(); ?></p>
               </div>
               <div class="card-footer">
-                <small class="text-muted"><?php echo get_the_date(); ?> / <?php the_category(', '); ?> / <?php the_author(); ?> </small>
+                <small class="text-muted"><?php the_time('F j, Y'); ?> / <?php the_category(', '); ?> / <?php the_author(); ?> </small>
               </div>
             </div>
           </div>
