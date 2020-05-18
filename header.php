@@ -7,7 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>style.css">
+    <!-- <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>style.css"> -->
+    <?php wp_head ?>
     <title>Bee theme</title>
   </head>
 
