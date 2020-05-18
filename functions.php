@@ -1,11 +1,12 @@
 <?php
-//------------------------------ STYLESHEETS, BOOTSTRAP AND JS------------------------------------//
+//-------------------- FOOTER: STYLESHEETS, BOOTSTRAP AND JS-------------------//
 function add_css_js() {
   wp_enqueue_style( 'style', get_stylesheet_uri() ); //style.css
   wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), 'false', 'all'); //boostrap CSS
-  // wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.js', array ( 'jquery' ), 1.1, true);
- 
- 
+
+  wp_enqueue_script( 'jquery'); //jquery
+  wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '4.5.0', true); //bootstrap JS
+  // wp_enqueue_script( 'js', get_template_directory_uri() . '/js/script.js', array('jquery'), false, true);//JS
 }
 add_action( 'wp_enqueue_scripts', 'add_css_js' );
 
