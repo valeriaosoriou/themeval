@@ -1,6 +1,6 @@
 <?php
 
-// MENU
+//------------------------------ MENU ------------------------------------//
 function register_my_menus() {
   register_nav_menus(
     array(
@@ -19,7 +19,7 @@ add_action( 'init', 'register_my_menus' );
         return $atts;
       }
 
-//HEADER customized
+//-----------------------------------HEADER -------------------------------//
 $args = array(
   'flex-width'    => true,
   'header-text'   => true,
@@ -30,19 +30,29 @@ $args = array(
 );
 add_theme_support( 'custom-header', $args );
 
-//LOGO custom
-add_theme_support( 'custom-logo' );
+//----------------------------- LOGO ------------------------------------//
+function themeval_custom_logo_setup() { //Adding custom logo with 5 arguments
+  $defaults = array(
+    'height'      => 50,
+    'width'       => 50,
+    'flex-height' => false,
+    'flex-width'  => false,
+    'header-text' => array( 'site-title', 'site-description' ),
+  );
+  add_theme_support( 'custom-logo', $defaults ); 
+}
+add_action( 'after_setup_theme', 'themeval_custom_logo_setup' );
 
 
 
 
 
-//THUMBNAIL IMAGES POST
+//-------------------------------- THUMBNAIL IMAGES POST -------------------//
 if ( function_exists( 'add_theme_support' ) ) {
   add_theme_support( 'post-thumbnails' );
 }
 
-//SIDEBAR
+//----------------------------------SIDEBAR ---------------------------------//
 add_action( 'widgets_init', 'my_register_sidebars' );
 function my_register_sidebars() {
     /* Register the 'primary' sidebar. */
@@ -60,12 +70,12 @@ function my_register_sidebars() {
     /* Repeat register_sidebar() code for additional sidebars. */
 }
 
-//WOOCOMMERCE
+//------------------------------------WOOCOMMERCE ---------------------------------//
 //unhook WC wrappers
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 
-//customised hook
+//hook
 add_action('woocommerce_before_main_content', 'my_theme_wrapper_start', 10);
 add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
 
@@ -76,5 +86,7 @@ function my_theme_wrapper_start() {
 function my_theme_wrapper_end() {
     echo '</section>';
 }
+
+//------------------------------------WOOCOMMERCE ---------------------------------//
 
 ?>

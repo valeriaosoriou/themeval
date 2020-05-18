@@ -17,8 +17,9 @@
     <div class="container-fluid bg-dark fixed-top">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark container">
         <a class="navbar-brand" href="#">
-          <img src="<?php bloginfo('template_url'); ?>/images/logoclear.png" width="50" height="40" class="d-inline-block align-top" alt="logo">
-          BEE LOVE YOU
+        <?php  the_custom_logo();  ?>
+          <!-- <img src="<?php bloginfo('template_url'); ?>/images/logoclear.png" width="50" height="40" class="d-inline-block align-top" alt="logo"> -->
+          <!-- BEE LOVE YOU -->
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
