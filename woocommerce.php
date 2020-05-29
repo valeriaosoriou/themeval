@@ -6,6 +6,7 @@
       <?php woocommerce_content(); ?>
     </div>
   </section>
+  
 
 <!-- FOOTER -->
 <?php get_footer(); ?>

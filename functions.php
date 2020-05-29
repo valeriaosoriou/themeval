@@ -1,26 +1,29 @@
 <?php
-//-------------------- FOOTER: STYLESHEETS, BOOTSTRAP AND JS-------------------//
+//-------------------- HEADER: STYLESHEETS, BOOTSTRAP AND JS-------------------//
 function add_css_js() {
-  wp_enqueue_style( 'style', get_stylesheet_uri() ); //style.css
+  //wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@300;400&display=swap'); //google-fonts CDN
+  //wp_enqueue_style( 'font-awesome', 'https://use.fontawesome.com/releases/v5.13.0/css/all.css', array(),'5.13.0', false);//font awesome CDN
+  wp_enqueue_style( 'style', get_stylesheet_uri()); //style.css
   wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), 'false', 'all'); //boostrap CSS
-
+  
+  
   wp_enqueue_script( 'jquery'); //jquery
   wp_enqueue_script( 'popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', array('jquery'), '1.14', true); //Popper CDN
   wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '4.5.0', true); //bootstrap JS
-  // wp_enqueue_script( 'js', get_template_directory_uri() . '/js/script.js', array('jquery'), false, true);//JS
+  wp_enqueue_script( 'js', get_template_directory_uri() . '/js/script.js', array('bootstrap'), '1.0', true);//custom JS
 }
 add_action( 'wp_enqueue_scripts', 'add_css_js' );
 
 //------------------------------ MENU ------------------------------------//
-function register_my_menus() {
+function themeval_register_my_menus() {
   register_nav_menus(
     array(
-      'header-menu' => __( 'Header Menu' )
+      'Principal menu' => __( 'Header Menu' )
       // 'extra-menu' => __( 'Extra Menu' )
     )
   );
 }
-add_action( 'init', 'register_my_menus' );
+add_action( 'init', 'themeval_register_my_menus' );
 
   // <a> CLASS (can be done in CSS)
     add_filter('nav_menu_link_attributes', 'a_class_nav', 10, 3);
@@ -36,7 +39,7 @@ $args = array(
   'header-text'   => true,
   'width'         => 1920,
   'flex-height'   => true,
-  'height'        => 500,
+  'height'        => 800,
   'default-image' => get_template_directory_uri() . '/images/header.jpg',
 );
 add_theme_support( 'custom-header', $args );
@@ -68,13 +71,24 @@ function my_register_sidebars() {
             'id'            => 'primary',
             'name'          => __( 'Primary Sidebar' ),
             'description'   => __( 'My primary custom sidebar.' ),
-            'before_widget' => '<div id="%1$s" class="widget %2$s" my-3>',
+            'before_widget' => '<div id="%1$s" class="widget %2$s my-3 customwidget">',
             'after_widget'  => '</div>',
             'before_title'  => '<h3 class="widget-title">',
-            'after_title'   => '</h3>',
+            'after_title'   => '</h3><hr>',
         )
     );
     /* Repeat register_sidebar() code for additional sidebars. */
+  //   register_sidebar(
+  //     array(
+  //         'id'            => 'woocommerce',
+  //         'name'          => __( 'Shop Sidebar' ),
+  //         'description'   => __( 'My shop custom sidebar.' ),
+  //         'before_widget' => '<div id="%1$s" class="widget %2$s my-3 customwidget">',
+  //         'after_widget'  => '</div>',
+  //         'before_title'  => '<h3 class="widget-title">',
+  //         'after_title'   => '</h3><hr>',
+  //     )
+  // );
 }
 
 //------------------------------------WOOCOMMERCE ---------------------------------//
@@ -94,6 +108,8 @@ function my_theme_wrapper_end() {
     echo '</section>';
 }
 
-//------------------------------------#####---------------------------------//
+//---------------------------------Theme customization API-----------------------------//
+require_once get_template_directory() . '/customizer.php';
 
+//---------------------------------#######-----------------------------//
 ?>

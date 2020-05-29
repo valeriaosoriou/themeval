@@ -33,6 +33,10 @@
             _e('Sorry, no posts matched your criteria', 'textdomain');
           endif; 
         ?>
+      </div><!-- end row -->
+      <!-- PAGINATION -->
+      <div>
+          <?php get_template_part('template-parts/content', 'pagination'); ?>
       </div>
     </div>
         
